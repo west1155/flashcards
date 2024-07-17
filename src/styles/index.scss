@@ -1,3 +1,5 @@
 // src/index.tsx
 
-@import './_colors.scss';
+@forward 'colors';
+@forward 'typography';
+@forward 'boilerplate';
