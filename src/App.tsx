@@ -1,5 +1,5 @@
 import {Button} from "./components/ui/button";
-import {Typography} from "./components/typography";
+import {Typography} from "./components/ui/typography";
 
 
 export function App() {
