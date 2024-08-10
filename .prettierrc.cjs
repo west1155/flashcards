@@ -1,7 +1,7 @@
 // .prettierrc.cjs
 
 module.exports = {
-    printWidth: 80,                  // Specifies the line length that the printer will wrap on.
+    printWidth: 120,                  // Specifies the line length that the printer will wrap on.
     tabWidth: 2,                     // Specifies the number of spaces per indentation level.
     useTabs: false,                  // Indents lines with spaces instead of tabs.
     semi: true,                      // Adds a semicolon at the end of every statement.
