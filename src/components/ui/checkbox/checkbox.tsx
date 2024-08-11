@@ -1,5 +1,6 @@
 import * as CheckboxRadix from '@radix-ui/react-checkbox';
-import { CheckIcon } from '@radix-ui/react-icons';
+import {CheckIcon} from '@radix-ui/react-icons';
+import { Typography } from '../typography';
 
 export type CheckboxProps = {
   checked: boolean;
@@ -17,19 +18,19 @@ export const Checkbox = ({ checked, label, disabled, id, onChange, className }: 
   };
 
   return (
-    <label className={classes.root}>
+    <Typography as="label" className={classes.root}>
       <CheckboxRadix.Root
         id={id}
         className={classes.checkbox}
         checked={checked}
-        onCheckedChange={onChange}
+        onCheckedChange={(checked) => onChange(!checked)}
         disabled={disabled}
       >
         <CheckboxRadix.Indicator className="Indicator" forceMount>
-          <CheckIcon />
+          {(checked && <CheckIcon />) || <CheckIcon color={'transparent'} />}
         </CheckboxRadix.Indicator>
       </CheckboxRadix.Root>
       {label}
-    </label>
+    </Typography>
   );
 };

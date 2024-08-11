@@ -16,6 +16,7 @@ type Story = StoryObj<typeof meta>
 
 export const Unchecked: Story = {
     args: {
+
         checked: false,
         label: 'Click me',
         onChange: () => {},
