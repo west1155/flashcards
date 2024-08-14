@@ -30,7 +30,7 @@ export const Checkbox = ({ checked, label, disabled, id, onChange, className }: 
           {(checked && <CheckIcon />) || <CheckIcon color={'transparent'} />}
         </CheckboxRadix.Indicator>
       </CheckboxRadix.Root>
-      {label}
+      {label && <Typography>{label}</Typography>}
     </Typography>
   );
 };

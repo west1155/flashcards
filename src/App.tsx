@@ -1,6 +1,7 @@
 import {Button} from "./components/ui/button";
 import {Typography} from "./components/ui/typography";
 import {Checkbox} from "./components/ui/checkbox";
+import {LoginForm} from "./components/auth/login-form/login-form";
 
 
 export function App() {
@@ -10,5 +11,7 @@ export function App() {
     <Typography variant="h2">dsfsdfgsdfg</Typography>
     <Checkbox onChange={() => {}} checked={true}></Checkbox>
     <Checkbox onChange={() => {}} checked={false}></Checkbox>
+
+    <LoginForm />
   </div>
 }
