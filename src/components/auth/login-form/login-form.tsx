@@ -31,15 +31,24 @@ export const LoginForm = () => {
         defaultValue: false,
     });
 
+    const emailRegex =
+        /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/
+
     return (
         <form onSubmit={onSubmit}>
             <TextField
-                {...register('email', { required: 'Email is required' })}
+                {...register('email', {
+                    required: 'Email is required',
+                    pattern: { value: emailRegex, message: 'Invalid email' }
+                })}
                 label='Email'
                 error={errors.email?.message}
             />
             <TextField
-                {...register('password', { required: 'Password is required' })}
+                {...register('password', {
+                    required: 'Password is required',
+                    minLength: { value: 6, message: 'Password must be at least 6 characters'}
+                })}
                 label='Password'
                 type={'password'}
                 error={errors.password?.message}
