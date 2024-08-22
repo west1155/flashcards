@@ -1,36 +1,42 @@
 /* TextField.css */
 
-.textfield-container {
-  margin-bottom: 20px;
-}
 
-.textfield-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
+  .textfield {
+    margin-bottom: 20px;
+  }
 
-.textfield-input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
-}
+  .textfield-container {
+    margin-bottom: 20px;
+  }
 
-.textfield-input.search {
-  border-color: #007aff;
-}
+  .textfield-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
 
-.textfield-input.primary {
-  border-color: #0056b3;
-}
+  .textfield-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    color: black;
+  }
 
-.textfield-input.invalid {
-  border-color: red;
-}
+  .textfield-input.search {
+    border-color: #007aff;
+  }
 
-.textfield-error {
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
-}
+  .textfield-input.primary {
+    border-color: #0056b3;
+  }
+
+  .textfield-input.invalid {
+    border-color: red;
+  }
+
+  .textfield-error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
