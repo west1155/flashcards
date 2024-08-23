@@ -3,6 +3,8 @@ import {useController, useForm} from 'react-hook-form';
 import { Button } from '../../ui/button';
 import { TextField } from '../../ui/textField';
 import {Checkbox} from "../../ui/checkbox";
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod'
 
 
 type FormValues = {
@@ -11,10 +13,17 @@ type FormValues = {
     rememberMe: boolean
 }
 
+
+const loginSchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(6),
+})
+
 export const LoginForm = () => {
     const { handleSubmit, register,
         control,
         formState: { errors } } = useForm<FormValues>({
+        resolver: zodResolver(loginSchema),
         defaultValues: {
             email: '',
             password: '',
@@ -31,25 +40,16 @@ export const LoginForm = () => {
         defaultValue: false,
     });
 
-    const emailRegex =
-        /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/
-
     return (
         <form onSubmit={onSubmit}>
             <TextField
-                {...register('email', {
-                    required: 'Email is required',
-                    pattern: { value: emailRegex, message: 'Invalid email' }
-                })}
+                {...register('email')}
                 label='Email'
                 error={errors.email?.message}
                 isInvalid={!!errors.email}
             />
             <TextField
-                {...register('password', {
-                    required: 'Password required',
-                    minLength: { value: 6, message: 'Password must be at least 6 characters'}
-                })}
+                {...register('password')}
                 label='Password'
                 type={'password'}
                 error={errors.password?.message}
