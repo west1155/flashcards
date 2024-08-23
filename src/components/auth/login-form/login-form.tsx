@@ -43,15 +43,17 @@ export const LoginForm = () => {
                 })}
                 label='Email'
                 error={errors.email?.message}
+                isInvalid={!!errors.email}
             />
             <TextField
                 {...register('password', {
-                    required: 'Password is required',
+                    required: 'Password required',
                     minLength: { value: 6, message: 'Password must be at least 6 characters'}
                 })}
                 label='Password'
                 type={'password'}
                 error={errors.password?.message}
+                isInvalid={!!errors.email}
             />
             <Checkbox
                 checked={value}
