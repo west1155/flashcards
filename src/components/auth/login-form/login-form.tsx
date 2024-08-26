@@ -33,28 +33,18 @@ export const LoginForm = () => {
 
 
     return (
-        <form onSubmit={onSubmit}>
-            <DevTool control={control} />
-            <TextField
-                {...register('email')}
-                label='Email'
-                error={errors.email?.message}
-                isInvalid={!!errors.email}
-            />
-            <TextField
-                {...register('password')}
-                label='Password'
-                type={'password'}
-                error={errors.password?.message}
-                isInvalid={!!errors.email}
-            />
-            <FormCheckbox
-                control={control}
-                name="rememberMe"
-                label="Remember Me"
-            />
-
-            <Button type="submit">Submit</Button>
-        </form>
+      <form onSubmit={onSubmit}>
+        <DevTool control={control} />
+        <TextField {...register('email')} label="Email" error={errors.email?.message} isInvalid={!!errors.email} />
+        <TextField
+          {...register('password')}
+          label="Password"
+          type={'password'}
+          error={errors.password?.message}
+          isInvalid={!!errors.email}
+        />
+        <FormCheckbox control={control} checked={true} name={'rememberMe'} label="Remember Me" />
+        <Button type="submit">Submit</Button>
+      </form>
     );
 };
