@@ -6,6 +6,7 @@ export function App() {
 
 
     <LoginForm/>
+    <div> Don't worry - be happy</div>
 
 
 

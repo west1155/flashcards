@@ -1,0 +1,3 @@
+import{j as i}from"./jsx-runtime-Cw0GR0a5.js";import{L as e}from"./login-form-CoYdo5Xc.js";import"./index-CTjT7uj6.js";import"./button-CF9YxOUo.js";import"./clsx-B-dksMZM.js";import"./textfield-oUETof1l.js";import"./index-OU0nE3BN.js";import"./index-D0cFg0-4.js";import"./get-a84fVwah.js";import"./isFunction-BOFSBG2p.js";import"./checkbox-EdrF3jN6.js";import"./typography-DVgGQaT3.js";const l={title:"Auth/LoginForm",component:e,tags:["autodocs"]},r={render:()=>i.jsx(e,{})};var o,t,m;r.parameters={...r.parameters,docs:{...(o=r.parameters)==null?void 0:o.docs,source:{originalSource:`{
+  render: () => <LoginForm />
+}`,...(m=(t=r.parameters)==null?void 0:t.docs)==null?void 0:m.source}}};const F=["Primary"];export{r as Primary,F as __namedExportsOrder,l as default};
