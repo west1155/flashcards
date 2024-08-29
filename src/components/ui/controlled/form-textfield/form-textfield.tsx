@@ -9,11 +9,13 @@ export type ControlledTextFieldProps<T extends FieldValues> = {
 export const FormTextField = <T extends FieldValues>({ name, control, ...rest }: ControlledTextFieldProps<T>) => {
   const {
     field,
-    fieldState: { error },
+    fieldState: { error }
   } = useController({
     name,
     control,
   });
 
-  return <TextField error={error?.message} {...field} {...rest} />;
+  console.log(error)
+
+  return <TextField isInvalid={!!error} error={error?.message} {...field} {...rest} />;
 };
