@@ -20,8 +20,7 @@ export const LoginForm = () => {
       <form onSubmit={onSubmit}>
         <DevTool control={control} />
         <FormTextField control={control} name={'email'} label={'Email'} />
-        <FormTextField control={control} name={'password'} label="Password" type={'password'}
-        />
+        <FormTextField control={control} name={'password'} label="Password" type={'password'} />
         <FormCheckbox control={control} checked={true} name={'rememberMe'} label="Remember Me" />
         <Button type="submit">Submit</Button>
       </form>

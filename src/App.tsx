@@ -1,12 +1,11 @@
-import {LoginForm} from "./components/auth/login-form/login-form";
+
+import {SignIn} from "./pages/sign-in/sign-in";
 
 
 export function App() {
   return <div>
 
-
-    <LoginForm/>
-    <div> Don't worry - be happy</div>
+      <SignIn></SignIn>
 
 
 
