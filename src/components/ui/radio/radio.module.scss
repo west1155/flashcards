@@ -1,4 +1,4 @@
-@import 'src/styles/mixings';
+@import '../../../styles/mixins';
 
 .root {
   @include flex(column, 12px);
