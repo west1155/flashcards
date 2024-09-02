@@ -1,12 +1,12 @@
 
 
-import {SignUp} from "./pages/sign-up/sign-up";
+import {CheckEmail} from "./pages/password_recovery/check_email/CheckEmail";
 
 
 export function App() {
   return <div>
 
-      <SignUp></SignUp>
+      <CheckEmail/>
 
 
 

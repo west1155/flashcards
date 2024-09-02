@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Typography } from '@/components/ui/typography';
 import s from './sign-up.module.scss';
+import {RegistrationForm} from "../../components/auth/registration-form";
 
 
 
@@ -13,7 +14,7 @@ export const SignUp = () => {
                     <Typography as="h2" variant="body1">
                         Sign Up
                     </Typography>
-                    <div>SignUpForm</div>
+                    <RegistrationForm />
                     <div className={s.login}>
                         <Typography variant="body2">Already have an account?</Typography>
                         <Button as={'a'} variant="link" className={s.signIn}>
