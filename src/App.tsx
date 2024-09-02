@@ -1,14 +1,9 @@
 
-
-import {CheckEmail} from "./pages/password_recovery/check_email/CheckEmail";
+import {Header} from "./components/header/Header";
 
 
 export function App() {
   return <div>
-
-      <CheckEmail/>
-
-
-
+      <Header />
   </div>
 }
