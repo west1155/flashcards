@@ -4,8 +4,6 @@ import Card from "../../../components/ui/card/card";
 import {Button} from "../../../components/ui/button";
 import {GlobalSvgSelector} from "../../../assets/icons/global/GlobalSvgSelector";
 
-
-
 export const CheckEmail = () => {
     return (
         <div className={s.container}>

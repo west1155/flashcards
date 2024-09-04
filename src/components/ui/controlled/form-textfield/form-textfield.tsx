@@ -15,7 +15,5 @@ export const FormTextField = <T extends FieldValues>({ name, control, ...rest }:
     control,
   });
 
-  console.log(error)
-
   return <TextField isInvalid={!!error} error={error?.message} {...field} {...rest} />;
 };

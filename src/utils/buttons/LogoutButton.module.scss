@@ -1,0 +1,21 @@
+@import '../../styles/mixins';
+
+.button {
+  background-color: var(--color-dark-100);
+
+  width: 122px;
+  height: 36px;
+  color: white;
+
+  padding: 8px 16px; /* Adjust padding as needed */
+  border-radius: 8px; /* Rounded corners */
+  gap: 8px; /* Space between icon and label */
+  border: none; /* No border */
+  cursor: pointer;
+  box-shadow: none;
+
+
+  &:hover {
+    background-color: var(--color-dark-mode-400)
+  }
+}

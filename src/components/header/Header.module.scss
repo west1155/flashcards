@@ -1,15 +1,5 @@
 @import '../../styles/mixins';
 
-@mixin header-interactions($hover-color: --color-accent-100, $size: 4px) {
-  &:hover {
-    filter: drop-shadow(0 0 $size var($hover-color));
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-info-700);
-  }
-}
-
 .root {
   position: fixed;
   z-index: 100;
@@ -24,52 +14,10 @@
 
   .container {
     @include flex(row, 0, 0, center, space-between);
-    @include container(1010px);
 
     height: 100%;
     padding-top: 0;
-
-    .user {
-      @include flex(row, 0, 14px, center);
-
-      .name {
-        text-decoration: none;
-        border-bottom: 2px dashed var(--color-light-100);
-        outline: none;
-        transition: 0.3s;
-
-        &:hover {
-          color: var(--color-accent-100);
-          border-bottom-color: var(--color-accent-100);
-        }
-
-        &:active {
-          color: var(--color-accent-300);
-          border-bottom-color: var(--color-accent-300);
-        }
-
-        &:focus-visible {
-          color: var(--color-info-300);
-          border-bottom-color: var(--color-info-300);
-        }
-      }
-
-      .dropdownButton {
-        @include header-interactions(--color-accent-100, 6px);
-
-        all: unset;
-
-        cursor: pointer;
-
-        width: 48px;
-        height: 48px;
-
-        border-radius: 50%;
-        outline: 2px solid transparent;
-
-        transition: 0.3s;
-      }
-    }
+    padding: 0 10em 0;
 
     .logo {
       cursor: pointer;
@@ -79,7 +27,6 @@
     }
 
     .link {
-      @include header-interactions(--color-accent-500);
 
       transform: translateX(-4px);
 

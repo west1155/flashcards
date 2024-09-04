@@ -1,0 +1,46 @@
+@import '../../styles/mixins';
+
+.root {
+  @include container(420px);
+
+  .content {
+    @include flex(column, 15px, 0, center);
+
+    .title {
+      margin-bottom: 27px;
+      text-align: center;
+      color: var(--color-light-900);
+    }
+
+    .avatarContainer {
+      position: relative;
+    }
+
+    .editImage {
+      @include flex(row, 0, 0, center, center);
+
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      padding: 4px;
+    }
+
+    .form {
+      align-self: stretch;
+    }
+
+    .label {
+        color: var(--color-dark-100);
+        margin-bottom: 8px;
+    }
+
+    .userName {
+      @include flex(row, 0, 0, center, center);
+      color: var(--color-light-900);
+    }
+
+    .icon {
+      fill: var(--color-light-100);
+    }
+  }
+}
