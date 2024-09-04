@@ -6,13 +6,13 @@ import s from "./icon-button.module.scss";
 
 type IconButtonProps<T extends ElementType = 'button'> = ButtonProps<T> & {
     icon: React.ReactNode;
-    label: string;
+    label?: string;
 };
 
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     ({ icon, label, className, variant = 'primary', fullWidth, ...rest }) => {
-        const classNames = clsx(s.iconButton, className);
+        const classNames = clsx(s.iconButton, s.transparent, className);
 
         return (
             <Button
@@ -22,7 +22,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
                 {...rest}
             >
                 <span className={s.icon}>{icon}</span>
-                <span className={s.label}>{label}</span>
+                {label && <span className={s.label}>{label}</span>}
             </Button>
         );
     }
