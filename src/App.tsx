@@ -1,12 +1,11 @@
-
-import {Header} from "./components/header/Header";
-
-import {Profile} from "./pages/profile/profile";
-
+import { Router } from './app/router';
+import {Provider} from "react-redux";
+import {store} from "./app/store/store";
 
 export function App() {
-  return <div>
-      <Header />
-      <Profile/>
-  </div>
+  return (
+    <Provider store={store}>
+        <Router />
+    </Provider>
+  );
 }
