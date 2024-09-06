@@ -1,10 +1,11 @@
 import {createBrowserRouter, Navigate, Outlet, RouteObject, RouterProvider} from 'react-router-dom'
-import {DecksPage} from "../pages/decks/decks.page";
+import {DecksPage} from "../pages/decks/Decks.page";
+import {Slider} from "../components/ui/slider/slider";
 
 const publicRoutes: RouteObject[] = [
     {
         path: '/login',
-        element: <div>login</div>,
+        element: <Slider value={[1,10]} />,
     },
 ]
 

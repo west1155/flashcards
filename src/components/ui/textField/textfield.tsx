@@ -3,7 +3,7 @@ import * as Label from '@radix-ui/react-label';
 import s from './textfield.module.scss';
 
 export interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    label: string;
+    label?: string;
     isInvalid?: boolean;
     isRequired?: boolean;
     error?: string;
