@@ -54,19 +54,6 @@
       .thumb {
         @include interactive-circle-element(36px);
 
-        cursor: pointer;
-
-        position: relative;
-
-        display: grid;
-        place-items: center;
-
-        width: 16px;
-        height: 16px;
-
-        background-color: var(--color-accent-500);
-        border-radius: 10px;
-        outline: none;
 
         &:hover::after,
         &:focus-visible::after {

@@ -1,35 +1,49 @@
-type DeckType = {
-  deck: {
+import { Table } from '@/components/ui/table';
+import { TableHeader } from '@/components/table-header';
+import {PackRow} from "@/components/ui/deck-row/pack-row";
+
+export const packsTableColumns = [
+  { key: 'name', title: 'Name' },
+  { key: 'cardsCount', title: 'Cards' },
+  { key: 'updated', title: 'Last Updated' },
+  { key: 'created', title: 'Created By' },
+  { key: 'controls', title: '', sortable: false },
+];
+
+export type DeckType = {
+  id: string;
+  userId: string;
+  name: string;
+  isPrivate: boolean;
+  shots: number;
+  cover: string | null;
+  rating: number;
+  isDeleted?: boolean | null;
+  isBlocked?: boolean | null;
+  created: string;
+  updated: string;
+  cardsCount: number;
+  author: {
     id: string;
     name: string;
-    cardsCount: number;
-    updated: string;
-    author: {
-      name: string;
-    };
-  }[];
+  };
 };
 
-export const DecksTable = ({ deck }: DeckType) => {
+export type DecksTableProps = {
+  authUserId: string;
+  deck: DeckType[];
+};
+
+
+export const DecksTable = ({ deck, authUserId, ...rest }: DecksTableProps) => {
   return (
-    <tbody>
-      {deck.map((deck: { id: string; name: string; cardsCount: number; updated: string; author: { name: string } }) => {
-        const updatedAt = new Date(deck.updated)
-          .toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-          })
-          .replace(/\//g, '.');
-        return (
-          <tr key={deck.id}>
-            <td>{deck.name}</td>
-            <td>{deck.cardsCount}</td>
-            <td>{updatedAt}</td>
-            <td>{deck.author.name}</td>
-          </tr>
-        );
-      })}
-    </tbody>
+    <Table.Root>
+      <TableHeader columns={packsTableColumns} {...rest} />
+      <Table.Body>
+        {deck.map((deck) => (
+            <PackRow key={deck.id} deck={deck} authUserId={authUserId} />
+        ))}
+      </Table.Body>
+    </Table.Root>
   );
 };
