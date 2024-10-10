@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 
-import s from './filter-controls.module.scss'
+import s from './filter-control.module.scss'
 
 import { Button } from '@/components/ui/button'
 
@@ -43,9 +43,9 @@ export const FilterControls: FC<Props> = memo(
             setTabValue('')
         }
 
-        const onClearTextField = () => {
-            setSearchName('')
-        }
+        // const onClearTextField = () => {
+        //     setSearchName('')
+        // }
 
         return (
             <div className={s.filter}>

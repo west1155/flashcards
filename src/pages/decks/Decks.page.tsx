@@ -5,6 +5,7 @@ import { TextField } from '../../components/ui/textField';
 import { Pagination } from '@/components/ui/paginator/paginator';
 import s from './Decks.module.scss';
 import { Typography } from '@/components/ui/typography';
+import {FilterControls} from "@/utils/features/filter-control/filter-control";
 
 export const DecksPage = () => {
   const [search, setSearch] = useState('');
@@ -30,6 +31,15 @@ export const DecksPage = () => {
         <Typography as="h1" variant="h2">
           Decks list
         </Typography>
+        <FilterControls searchName={'Kuku'}
+                        setSearchName={() => {}}
+                        sliderValue={[12,23]}
+                        sliderMaxValue={200}
+                        setSliderValue={() => {}}
+                        tabValue={'2'}
+                        setTabValue={() => {}}
+                        authUserId={'2'}
+        />
         <TextField onChange={(e) => setSearch(e.currentTarget.value)} value={search} />
         <DecksTable deck={data?.items as DeckType[]} authUserId={'1'} />
         <Pagination totalCount={20} pageSize={3} onPageChange={() => {}} onPageSizeChange={() => {}} currentPage={1} />
