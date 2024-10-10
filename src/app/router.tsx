@@ -2,6 +2,7 @@ import {createBrowserRouter, Navigate, Outlet, RouteObject, RouterProvider} from
 import {DecksPage} from "../pages/decks/Decks.page";
 import {Slider} from "../components/ui/slider/slider";
 import {Pagination} from "../components/ui/paginator/paginator";
+import {Layout} from "@/components/layout/layout";
 
 const publicRoutes: RouteObject[] = [
     {
@@ -31,10 +32,15 @@ function PrivateRoutes() {
 
 const router = createBrowserRouter([
     {
-        element: <PrivateRoutes />,
-        children: privateRoutes,
+        element: <Layout />, // Wrap routes with Layout
+        children: [
+            {
+                element: <PrivateRoutes />,
+                children: privateRoutes,
+            },
+            ...publicRoutes,
+        ],
     },
-    ...publicRoutes,
 ])
 
 
