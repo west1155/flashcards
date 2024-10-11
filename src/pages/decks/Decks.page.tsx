@@ -1,18 +1,26 @@
 import { useGetDecksQuery } from '../../app/api/flashcards-api';
 import { DecksTable, DeckType } from './DecksTable';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import { Pagination } from '@/components/ui/paginator/paginator';
 import s from './Decks.module.scss';
 import { Typography } from '@/components/ui/typography';
 import { FilterControls } from '@/utils/features/filter-control/filter-control';
 import { AddNewDeckButton } from '@/utils/buttons/AddNewDeckButton';
+import {useGetMeQuery} from "@/app/api/auth/auth";
 
 
 export const DecksPage = () => {
   const [search, setSearch] = useState('');
+  const {data: userData} = useGetMeQuery()
   const { data, isLoading, error } = useGetDecksQuery({
     name: search,
   });
+
+  useEffect(() => {
+    if (userData) {
+      console.log('User Data:', userData);
+    }
+  }, [userData]);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
