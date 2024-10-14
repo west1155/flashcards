@@ -3,6 +3,7 @@ import {DecksPage} from "../pages/decks/Decks.page";
 import {Slider} from "../components/ui/slider/slider";
 import {Pagination} from "../components/ui/paginator/paginator";
 import {Layout} from "@/components/layout/layout";
+import {SignIn} from "@/pages/sign-in/Sign-in";
 
 const publicRoutes: RouteObject[] = [
     {
@@ -13,6 +14,10 @@ const publicRoutes: RouteObject[] = [
         path: '/page',
         element: <Pagination totalCount={20} pageSize={3} onPageChange={() => {}} onPageSizeChange={() => {}} currentPage={1}/>,
     },
+    {
+        path: '/sign-in',
+        element: <SignIn />,
+    }
 ]
 
 
@@ -27,7 +32,7 @@ const privateRoutes: RouteObject[] = [
 function PrivateRoutes() {
     const isAuthenticated = true
 
-    return isAuthenticated ? <Outlet /> : <Navigate to="/login" />
+    return isAuthenticated ? <Outlet /> : <Navigate to="/sign-in" />
 }
 
 const router = createBrowserRouter([

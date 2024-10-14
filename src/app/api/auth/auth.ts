@@ -40,8 +40,18 @@ export const authAPI = createApi({
         return response;
       },
     }),
+    login: builder.mutation<UserResponse, { email: string; password: string }>({
+      query: (body) => ({
+        url: '/v1/auth/login',
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 });
 
 // Export hooks for usage in functional components
-export const { useGetMeQuery } = authAPI;
+export const {
+  useGetMeQuery,
+  useLoginMutation,
+} = authAPI;

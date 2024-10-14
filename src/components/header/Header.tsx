@@ -1,6 +1,7 @@
 import s from './Header.module.scss';
 import { GlobalSvgSelector } from '../../assets/icons/global/GlobalSvgSelector';
 import { Button } from '../ui/button';
+import {Link} from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -12,7 +13,9 @@ export const Header = () => {
           </div>
         </div>
         <div className={s.user}>
-          <Button as="a">Sign In</Button>
+          <Link to={'sign-in'}>
+            <Button as="a">Sign In</Button>
+          </Link>
         </div>
       </div>
     </div>
