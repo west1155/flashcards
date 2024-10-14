@@ -1,15 +1,18 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// Define the UserResponse type that matches the expected API response
+
 export type UserResponse = {
-  avatar: string;
-  id: string;
-  email: string;
-  isEmailVerified: boolean;
-  name: string;
-  created: string;
-  updated: string;
-};
+  avatar: string
+  id: string
+  email: string
+  isEmailVerified: boolean
+  name: string
+  created: string
+  updated: string
+}
+
+
+
 
 // Define the API slice using createApi
 export const authAPI = createApi({
@@ -27,7 +30,7 @@ export const authAPI = createApi({
   }),
   endpoints: (builder) => ({
     // Define the 'getMe' endpoint that will handle the GET /v1/auth/me request
-    getMe: builder.query<UserResponse, void>({
+    getMe: builder.query<UserResponse | null | { success: boolean }, void>({
       query: () => '/v1/auth/me',
       // Custom error handling, transforming the response if necessary
       transformResponse: (response: UserResponse, meta) => {
@@ -40,12 +43,19 @@ export const authAPI = createApi({
         return response;
       },
     }),
-    login: builder.mutation<UserResponse, { email: string; password: string }>({
+    login: builder.mutation<{accessToken: string}, { email: string; password: string, rememberMe: boolean }>({
       query: (body) => ({
         url: '/v1/auth/login',
         method: 'POST',
         body,
       }),
+    }),
+    signup: builder.mutation<UserResponse, {email: string; password: string}>({
+        query: (body) => ({
+            url: '/v1/auth/sign-up',
+            method: 'POST',
+            body,
+        }),
     }),
   }),
 });
@@ -54,4 +64,6 @@ export const authAPI = createApi({
 export const {
   useGetMeQuery,
   useLoginMutation,
+  useSignupMutation,
+
 } = authAPI;

@@ -7,6 +7,12 @@ import {RegistrationForm} from "../../components/auth/registration-form";
 
 
 export const SignUp = () => {
+
+    const signUpHandler = () => {
+        // This will trigger the alert when the form is submitted
+        alert('Sign Up');
+    };
+
     return (
         <div className={s.root}>
             <Card>
@@ -14,7 +20,7 @@ export const SignUp = () => {
                     <Typography as="h2" variant="body1">
                         Sign Up
                     </Typography>
-                    <RegistrationForm />
+                    <RegistrationForm onSubmit={signUpHandler}  />
                     <div className={s.login}>
                         <Typography variant="body2">Already have an account?</Typography>
                         <Button as={'a'} variant="link" className={s.signIn}>

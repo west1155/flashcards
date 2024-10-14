@@ -4,6 +4,7 @@ import {Slider} from "../components/ui/slider/slider";
 import {Pagination} from "../components/ui/paginator/paginator";
 import {Layout} from "@/components/layout/layout";
 import {SignIn} from "@/pages/sign-in/Sign-in";
+import {SignUp} from "@/pages/sign-up/Sign-up";
 
 const publicRoutes: RouteObject[] = [
     {
@@ -17,6 +18,10 @@ const publicRoutes: RouteObject[] = [
     {
         path: '/sign-in',
         element: <SignIn />,
+    },
+    {
+        path: '/sign-up',
+        element: <SignUp />,
     }
 ]
 

@@ -1,21 +1,29 @@
-import {z} from "zod";
-import {useForm} from "react-hook-form";
-import {zodResolver} from "@hookform/resolvers/zod";
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import {emailSchema, stringSchema} from "@/schemas/zod_schema";
 
-const loginSchema = z.object({
-    email: z.string().email(),
-    password: z.string().min(6),
-})
 
-type FormValues = z.infer<typeof loginSchema>
+const registrationSchema = z
+    .object({
+        email: emailSchema,
+        password: stringSchema,
+        confirmPassword: stringSchema,
+    })
+    .refine(data => data.password === data.confirmPassword, {
+        message: "Passwords don't match",
+        path: ['confirmPassword'],
+    })
+
+export type SignUpFormProps = z.infer<typeof registrationSchema>
 
 export const useSignUp = () => {
-    return useForm<FormValues>({
-        resolver: zodResolver(loginSchema),
+    return useForm<SignUpFormProps>({
+        resolver: zodResolver(registrationSchema),
         defaultValues: {
             email: '',
             password: '',
+            confirmPassword: '',
         },
     })
-
 }
