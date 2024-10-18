@@ -6,6 +6,7 @@ import { clsx } from 'clsx'
 import s from './avatar.module.scss'
 
 type AvatarProps = {
+    name?: string
     image?: string
     size?: number
     style?: CSSProperties

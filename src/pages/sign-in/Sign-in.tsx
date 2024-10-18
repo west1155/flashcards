@@ -13,8 +13,9 @@ export const SignIn = () => {
 
   const loginHandler = async (data: FormValues) => {
     try {
-      const response = await login({ email: data.email, password: data.password }).unwrap();
+      const response = await login({ email: data.email, password: data.password, rememberMe: data.rememberMe }).unwrap();
       console.log('Logged in successfully:', response);
+
     } catch (e: any) {
       console.error(e.data.message);
     }

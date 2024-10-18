@@ -1,18 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-
 export type UserResponse = {
-  avatar: string
-  id: string
-  email: string
-  isEmailVerified: boolean
-  name: string
-  created: string
-  updated: string
-}
-
-
-
+  avatar: string;
+  id: string;
+  email: string;
+  isEmailVerified: boolean;
+  name: string;
+  created: string;
+  updated: string;
+};
 
 // Define the API slice using createApi
 export const authAPI = createApi({
@@ -43,19 +39,33 @@ export const authAPI = createApi({
         return response;
       },
     }),
-    login: builder.mutation<{accessToken: string}, { email: string; password: string, rememberMe: boolean }>({
+    login: builder.mutation<{ accessToken: string }, { email: string; password: string; rememberMe: boolean }>({
       query: (body) => ({
         url: '/v1/auth/login',
         method: 'POST',
         body,
       }),
     }),
-    signup: builder.mutation<UserResponse, {email: string; password: string}>({
-        query: (body) => ({
-            url: '/v1/auth/sign-up',
-            method: 'POST',
-            body,
-        }),
+    signup: builder.mutation<UserResponse, { email: string; password: string }>({
+      query: (body) => ({
+        url: '/v1/auth/sign-up',
+        method: 'POST',
+        body,
+      }),
+    }),
+    recoverPassword: builder.mutation<void, { email: string }>({
+      query: (body) => ({
+        url: '/v1/auth/recover-password',
+        method: 'POST',
+        body,
+      }),
+    }),
+    resetPassword: builder.mutation<void, { token: string; password: string }>({
+      query: ({ token, password }) => ({
+        url: `v1/auth/reset-password/${token}`,
+        method: 'POST',
+        body: { password },
+      }),
     }),
   }),
 });
@@ -65,5 +75,6 @@ export const {
   useGetMeQuery,
   useLoginMutation,
   useSignupMutation,
-
+  useRecoverPasswordMutation,
+  useResetPasswordMutation,
 } = authAPI;

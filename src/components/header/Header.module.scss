@@ -17,7 +17,7 @@
 
     height: 100%;
     padding-top: 0;
-    padding: 0 10em 0;
+    padding: 0 10em;
 
     .logo {
       cursor: pointer;
@@ -27,20 +27,14 @@
     }
 
     .link {
-
       transform: translateX(-4px);
-
       display: grid;
       place-items: center;
-
       width: 124px;
       height: 46px;
-
       border-radius: 23px;
       outline: 2px solid transparent;
-
       transition: 0.3s;
-
     }
   }
 }

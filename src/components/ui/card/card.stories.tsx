@@ -1,4 +1,4 @@
-import { InfoFill as InfoIcon } from '../../../assets/icons/InfoFill'
+
 import { Card } from './'
 import { Meta, StoryObj } from '@storybook/react'
 
@@ -24,13 +24,6 @@ export const PrimaryWithIcon: Story = {
   args: {
     children:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
-    iconComponent: (
-        <InfoIcon
-            backgroundColor={'var(--color-neutral-light-50)'}
-            color={'var(--color-danger-500)'}
-            size={16}
-        />
-    ),
     title: 'Some title',
   },
 }
@@ -46,6 +39,5 @@ export const Info: Story = {
   args: {
     children:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
-    variant: 'info',
   },
 }

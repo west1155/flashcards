@@ -3,6 +3,7 @@ import s from './CheckEmail.module.scss'
 import Card from "../../../components/ui/card/card";
 import {Button} from "../../../components/ui/button";
 import {GlobalSvgSelector} from "../../../assets/icons/global/GlobalSvgSelector";
+import {Link} from "react-router-dom";
 
 export const CheckEmail = () => {
     return (
@@ -20,9 +21,9 @@ export const CheckEmail = () => {
                     <Typography variant="body2" className={s.notification}>
                         We’ve sent an Email with instructions to email
                     </Typography>
-                    <Button fullWidth>
-                        Back to Sign in
-                    </Button>
+                    <Link to={'/sign-in'}>
+                        <Button> Back to Sign in </Button>
+                    </Link>
                 </div>
             </Card>
         </div>

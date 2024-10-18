@@ -30,14 +30,9 @@ a:visited {
 }
 
 body {
-
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-
   font-family: var(--font-family-primary), sans-serif;
   line-height: var(--line-height-m);
   color: var(--color-light-900);
   background-color: var(--color-dark-900);
+  margin: 0; // Ensure there's no default body margin
 }

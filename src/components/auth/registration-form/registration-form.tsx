@@ -6,14 +6,6 @@ import {useSignUp} from "./signup";
 import {PropsWithChildren} from "react";
 import {clsx} from "clsx";
 import s from "@/components/auth/login-form/login-form.module.scss";
-import {useSignIn} from "@/components/auth/login-form/singin";
-
-
-type FormValues = {
-    email: string;
-    password: string;
-    confirmPassword: string;
-};
 
 type Props = {
     onSubmit: (data: any) => void
@@ -28,7 +20,7 @@ export const RegistrationForm = ({onSubmit, className}: Props) => {
 
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className={classes}>
             <FormTextField control={control} name={'email'} label={'Email'} />
             <FormTextField control={control} name={'password'} label="Password" type={'password'} />
             <FormTextField control={control} name={'confirmPassword'} label={'Repeat Password'} type={'password'} />
