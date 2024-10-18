@@ -16,6 +16,8 @@ export const Layout = () => {
         }
       : null;
 
+
+  console.log(headerData)
   return (
     <>
       <Header data={headerData} logout={logout} />
