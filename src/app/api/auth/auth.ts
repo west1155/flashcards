@@ -22,9 +22,9 @@ export const authAPI = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.flashcards.andrii.es',
     credentials: 'include',
-    prepareHeaders: headers => {
+    prepareHeaders: (headers) => {
       headers.append('x-auth-skip', 'true');
-    }
+    },
   }),
   endpoints: (builder) => ({
     // Define the 'getMe' endpoint that will handle the GET /v1/auth/me request
@@ -79,6 +79,13 @@ export const authAPI = createApi({
         body: { password },
       }),
     }),
+    logout: builder.mutation<void, void>({
+      query: () => ({
+        url: 'v1/auth/logout',
+        method: 'POST',
+      }),
+      invalidatesTags: ['Me'],
+    }),
   }),
 });
 
@@ -86,6 +93,7 @@ export const authAPI = createApi({
 export const {
   useGetMeQuery,
   useLoginMutation,
+  useLogoutMutation,
   useSignupMutation,
   useRecoverPasswordMutation,
   useResetPasswordMutation,

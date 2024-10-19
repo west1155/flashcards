@@ -6,22 +6,18 @@ import { Button } from '../../components/ui/button';
 import { useGetMeQuery, useLoginMutation } from '@/app/api/auth/auth';
 import { FormValues } from '@/components/auth/login-form/singin';
 import {Link, useNavigate} from 'react-router-dom';
-import {setAccessToken} from "@/app/api/auth/authSlice";
-import {useDispatch} from "react-redux";
 
 
 export const SignIn = () => {
   const [login] = useLoginMutation();
   const { data: me } = useGetMeQuery();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
 
   const loginHandler = async (data: FormValues) => {
     try {
       const response = await login({ email: data.email, password: data.password, rememberMe: data.rememberMe }).unwrap();
       console.log('Logged in successfully:', response);
-      dispatch(setAccessToken(response.accessToken));
       navigate('/')
     } catch (e: any) {
       console.error(e.data.message);

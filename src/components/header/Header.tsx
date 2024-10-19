@@ -10,10 +10,7 @@ type Props = {
 };
 
 export const Header = ({ data, logout }: Props) => {
-
-
-  console.log(data)
-
+  console.log(data);
 
   return (
     <div className={s.root}>
