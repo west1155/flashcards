@@ -11,7 +11,7 @@ import {useGetMeQuery} from "@/app/api/auth/auth";
 
 export const DecksPage = () => {
   const [search, setSearch] = useState('');
-  const {data: userData} = useGetMeQuery()
+  const {data: userData} = useGetMeQuery();
   const { data, isLoading, error } = useGetDecksQuery({
     name: search,
   });

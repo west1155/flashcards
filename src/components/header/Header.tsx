@@ -5,12 +5,11 @@ import { Link } from 'react-router-dom';
 import { ProfileInfoProps } from '@/components/header/profile-info/profile-info';
 
 type Props = {
-  data: ProfileInfoProps | null;
+  data?: ProfileInfoProps | null;
   logout: () => void;
 };
 
 export const Header = ({ data, logout }: Props) => {
-  console.log(data);
 
   return (
     <div className={s.root}>

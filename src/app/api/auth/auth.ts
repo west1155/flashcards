@@ -18,7 +18,7 @@ export type TokenType = {
 // Define the API slice using createApi
 export const authAPI = createApi({
   reducerPath: 'authAPI',
-  tagTypes: ['Me'],
+  tagTypes: ['me'],
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.flashcards.andrii.es',
     credentials: 'include',
@@ -27,13 +27,14 @@ export const authAPI = createApi({
     },
   }),
   endpoints: (builder) => ({
-    // Define the 'getMe' endpoint that will handle the GET /v1/auth/me request
     getMe: builder.query<UserResponse | null | { success: boolean }, void>({
       async queryFn(_name, _api, _extraOptions, baseQuery) {
         const result = await baseQuery({
           url: `v1/auth/me`,
           method: 'GET',
         });
+
+        console.log(result)
 
         if (result.error) {
           return {
@@ -43,10 +44,11 @@ export const authAPI = createApi({
 
         return { data: result.data } as { data: UserResponse };
       },
+      keepUnusedDataFor: 0,
       extraOptions: {
         maxRetries: 0,
       },
-      providesTags: ['Me'],
+      providesTags: ['me'],
     }),
 
     login: builder.mutation<{ accessToken: string }, { email: string; password: string; rememberMe: boolean }>({
@@ -55,7 +57,8 @@ export const authAPI = createApi({
         method: 'POST',
         body: data,
       }),
-      invalidatesTags: ['Me'],
+      invalidatesTags: ['me'],
+
     }),
 
     signup: builder.mutation<UserResponse, { email: string; password: string }>({
@@ -84,7 +87,7 @@ export const authAPI = createApi({
         url: 'v1/auth/logout',
         method: 'POST',
       }),
-      invalidatesTags: ['Me'],
+      invalidatesTags: ['me'],
     }),
   }),
 });

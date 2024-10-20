@@ -14,3 +14,11 @@ export const store = configureStore({
 
 export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof store.getState>
+
+declare global {
+    interface Window {
+        store: typeof store;
+    }
+}
+
+window.store = store;
