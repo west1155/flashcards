@@ -1,29 +1,23 @@
-import { useGetDecksQuery } from '../../app/api/flashcards-api';
-import { DecksTable, DeckType } from './DecksTable';
-import {useEffect, useState} from 'react';
-import { Pagination } from '@/components/ui/paginator/paginator';
-import s from './Decks.module.scss';
-import { Typography } from '@/components/ui/typography';
-import { FilterControls } from '@/utils/features/filter-control/filter-control';
-import { AddNewDeckButton } from '@/utils/buttons/AddNewDeckButton';
-import {useGetMeQuery} from "@/app/api/auth/auth";
+import { useEffect, useState } from 'react'
 
+import { useGetMeQuery } from '@/app/api/auth/auth'
+import { Typography } from '@/components/ui/typography'
+import { AddNewDeckButton } from '@/utils/buttons/AddNewDeckButton'
+
+import s from './Decks.module.scss';
+
+import { useGetDecksQuery } from '../../app/api/flashcards-api'
+import { DeckType, DecksTable } from './DecksTable'
 
 export const DecksPage = () => {
-  const [search, setSearch] = useState('');
-  const {data: userData} = useGetMeQuery();
-  const { data, isLoading, error } = useGetDecksQuery({
+  const [search, setSearch] = useState('')
+  const { data: userData } = useGetMeQuery()
+  const { data, error, isLoading } = useGetDecksQuery({
     name: search,
-  });
-
-  useEffect(() => {
-    if (userData) {
-      console.log('User Data:', userData);
-    }
-  }, [userData]);
+  })
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <h1>Loading...</h1>
   }
 
   if (error) {
@@ -31,23 +25,21 @@ export const DecksPage = () => {
   }
 
   if (!data) {
-    return <div>No data</div>;
+    return <div>No data</div>
   }
-
-
 
   return (
     <section className={s.root}>
       <div className={s.header}>
         <div className={s.top}>
-          <Typography as="h1" variant="h2">
+          <Typography as={'h1'} variant={'h2'}>
             Decks list
           </Typography>
           <AddNewDeckButton />
         </div>
       </div>
-      <DecksTable deck={data?.items as DeckType[]} authUserId={'1'} />
-      <Pagination totalCount={20} pageSize={3} onPageChange={() => {}} onPageSizeChange={() => {}} currentPage={1} />
+      <DecksTable authUserId={'1'} deck={data?.items as DeckType[]} />
+      {/*<Pagination totalCount={20} pageSize={3} onPageChange={() => {}} onPageSizeChange={() => {}} currentPage={1} />*/}
     </section>
-  );
-};
+  )
+}

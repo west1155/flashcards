@@ -1,43 +1,43 @@
 import { Pagination } from '../../decks/Decks.types'
 
 export type Card = {
-    id: string
-    question: string
-    answer: string
-    deckId: string
-    questionImg: string | null
-    answerImg: string | null
-    questionVideo: string | null
-    answerVideo: string | null
-    created: string
-    updated: string
-    shots: number
-    grade: number
-    userId: string
+  answer: string
+  answerImg: null | string
+  answerVideo: null | string
+  created: string
+  deckId: string
+  grade: number
+  id: string
+  question: string
+  questionImg: null | string
+  questionVideo: null | string
+  shots: number
+  updated: string
+  userId: string
 }
 
 export type CardsResponse = {
-    pagination: Pagination
-    items: Card[]
+  items: Card[]
+  pagination: Pagination
 }
 
 export type CardsParams = {
-    question?: string
-    answer?: string
-    orderBy?: string
-    currentPage?: number
-    itemsPerPage?: number
+  answer?: string
+  currentPage?: number
+  itemsPerPage?: number
+  orderBy?: string
+  question?: string
 } | void
 
 export type CardResponse = Omit<Card, 'userId'>
 
 export type RandomCardRequest = {
-    id: string
-    previousCardId?: string
+  id: string
+  previousCardId?: string
 }
 
 export type CardRateRequest = {
-    packId: string
-    cardId: string
-    grade: number
+  cardId: string
+  grade: number
+  packId: string
 }

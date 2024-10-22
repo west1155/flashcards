@@ -7,10 +7,9 @@ import s from './card.module.scss'
 export type CardProps = ComponentPropsWithoutRef<'div'>
 
 const Card = forwardRef<HTMLDivElement, CardProps>(({ className, ...restProps }, ref) => {
-    const classNames = clsx(s.root, className)
+  const classNames = clsx(s.root, className)
 
-    return <div ref={ref} className={classNames} {...restProps}></div>
+  return <div className={classNames} ref={ref} {...restProps}></div>
 })
-
 
 export default Card
