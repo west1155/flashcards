@@ -9421,13 +9421,13 @@ function os(r) {
 }
 n(os, "simulatePageLoad");
 
-// src/types/index.ts
+// src/cardTypes.ts/index.ts
 var Dt = {};
 Ce(Dt, {
   Addon_TypesEnum: () => ym
 });
 
-// src/types/modules/addons.ts
+// src/cardTypes.ts/modules/addons.ts
 var ym = /* @__PURE__ */ ((l) => (l.TAB = "tab", l.PANEL = "panel", l.TOOL = "tool", l.TOOLEXTRA = "toolextra", l.PREVIEW = "preview", l.experimental_PAGE =
 "page", l.experimental_SIDEBAR_BOTTOM = "sidebar-bottom", l.experimental_SIDEBAR_TOP = "sidebar-top", l))(ym || {});
 

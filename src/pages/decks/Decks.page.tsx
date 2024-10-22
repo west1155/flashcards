@@ -45,16 +45,6 @@ export const DecksPage = () => {
           </Typography>
           <AddNewDeckButton />
         </div>
-        <FilterControls
-          searchName={'Kuku'}
-          setSearchName={() => {}}
-          sliderValue={[12, 23]}
-          sliderMaxValue={200}
-          setSliderValue={() => {}}
-          tabValue={'2'}
-          setTabValue={() => {}}
-          authUserId={'2'}
-        />
       </div>
       <DecksTable deck={data?.items as DeckType[]} authUserId={'1'} />
       <Pagination totalCount={20} pageSize={3} onPageChange={() => {}} onPageSizeChange={() => {}} currentPage={1} />

@@ -1,1 +1,1 @@
-/// <reference types="vite/client" />
+/// <reference cardTypes.ts="vite/client" />

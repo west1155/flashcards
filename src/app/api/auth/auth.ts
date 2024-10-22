@@ -18,7 +18,7 @@ export type TokenType = {
 // Define the API slice using createApi
 export const authAPI = createApi({
   reducerPath: 'authAPI',
-  tagTypes: ['me'],
+  tagTypes: ['Cards','me'],
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.flashcards.andrii.es',
     credentials: 'include',

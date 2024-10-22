@@ -777,7 +777,7 @@ ponent?");
       return !!(typeof _ == "string" || typeof _ == "function" || _ === o || _ === l || le || _ === s || _ === v || _ === g || ie || _ === E ||
       U || q || ee || typeof _ == "object" && _ !== null && (_.$$typeof === w || _.$$typeof === b || _.$$typeof === c || _.$$typeof === p ||
       _.$$typeof === h || // This needs to include all possible module reference object
-      // types supported by any Flight configuration anywhere since
+      // cardTypes.ts supported by any Flight configuration anywhere since
       // we don't know which Flight build this will end up being used
       // with.
       _.$$typeof === Gi || _.getModuleId !== void 0));
@@ -1114,7 +1114,7 @@ tion" && Qs.set(_, Bt), Bt;
             try {
               if (typeof _[Fe] != "function") {
                 var ut = Error((re || "React class") + ": " + X + " type `" + Fe + "` is invalid; it must be a function, usually from the `p\
-rop-types` package, but received `" + typeof _[Fe] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTyp\
+rop-cardTypes.ts` package, but received `" + typeof _[Fe] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTyp\
 es.func`.");
                 throw ut.name = "Invariant Violation", ut;
               }
@@ -8115,7 +8115,7 @@ __reactEvents$" + Pf, fse = "__reactListeners$" + Pf, dse = "__reactHandles$" + 
             try {
               if (typeof n[x] != "function") {
                 var T = Error((d || "React class") + ": " + u + " type `" + x + "` is invalid; it must be a function, usually from the `prop\
--types` package, but received `" + typeof n[x] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.f\
+-cardTypes.ts` package, but received `" + typeof n[x] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.f\
 unc`.");
                 throw T.name = "Invariant Violation", T;
               }
@@ -9748,7 +9748,7 @@ der. Or maybe you meant to call this function rather than return it.");
         if (Ee === Gi)
           return k(V, ne, W.props.children, ce, W.key);
         if (ne !== null && (ne.elementType === Ee || // Keep this check inline so it only runs on the false path:
-        nI(ne, W) || // Lazy types should reconcile their resolved type.
+        nI(ne, W) || // Lazy cardTypes.ts should reconcile their resolved type.
         // We need to do this after the Hot Reloading check above,
         // because hot reloading has different semantics than prod because
         // it doesn't resuspend. So we can't let the call below suspend.
@@ -10020,7 +10020,7 @@ ndering. Keep in mind you might need to polyfill these features for older browse
                 return We.return = V, We._debugSource = W._source, We._debugOwner = W._owner, We;
               }
             } else if (ge.elementType === Ue || // Keep this check inline so it only runs on the false path:
-            nI(ge, W) || // Lazy types should reconcile their resolved type.
+            nI(ge, W) || // Lazy cardTypes.ts should reconcile their resolved type.
             // We need to do this after the Hot Reloading check above,
             // because hot reloading has different semantics than prod because
             // it doesn't resuspend. So we can't let the call below suspend.
@@ -16453,7 +16453,7 @@ This is not supported. Did you mean to call root.unmount()?");
     a(afe, "unmountComponentAtNode"), Xne($ce), Jne(Hce), Zne(zce), eae(Mo), tae(Gne), (typeof Map != "function" || // $FlowIssue Flow incorrectly thinks Map has no prototype
     Map.prototype == null || typeof Map.prototype.forEach != "function" || typeof Set != "function" || // $FlowIssue Flow incorrectly thinks Set has no prototype
     Set.prototype == null || typeof Set.prototype.clear != "function" || typeof Set.prototype.forEach != "function") && c("React depends on \
-Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills"), kre(rie), Bre(
+Map and Set built-in cardTypes.ts. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills"), kre(rie), Bre(
     Rx, Xue, vs);
     function ofe(n, i) {
       var u = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : null;
@@ -16607,7 +16607,7 @@ var qI, VI = G(() => {
       this.ctr % (this.isSpeedy ? 65e3 : 1) === 0 && this._insertTag(Vfe(this));
       var s = this.tags[this.tags.length - 1], l = o.charCodeAt(0) === 64 && o.charCodeAt(1) === 105;
       if (l && this._alreadyInsertedOrderInsensitiveRule && console.error(`You're attempting to insert the following rule:
-` + o + "\n\n`@import` rules must be before all other types of rules in a stylesheet but other rules have already been inserted. Please ensure\
+` + o + "\n\n`@import` rules must be before all other cardTypes.ts of rules in a stylesheet but other rules have already been inserted. Please ensure\
  that `@import` rules are before all other rules."), this._alreadyInsertedOrderInsensitiveRule = this._alreadyInsertedOrderInsensitiveRule ||
       !l, this.isSpeedy) {
         var c = qfe(s);
@@ -17985,7 +17985,7 @@ var za, Pje, Cde, JL, XL, GC, oa, Dde, Ade, YC, qC, QL, VC, WC, B5 = G(() => {
         default: "./jsx-dev-runtime/dist/emotion-react-jsx-dev-runtime.cjs.js"
       },
       "./package.json": "./package.json",
-      "./types/css-prop": "./types/css-prop.d.ts",
+      "./types/css-prop": "./cardTypes.ts/css-prop.d.ts",
       "./macro": {
         types: {
           import: "./macro.d.mts",
@@ -17994,21 +17994,21 @@ var za, Pje, Cde, JL, XL, GC, oa, Dde, Ade, YC, qC, QL, VC, WC, B5 = G(() => {
         default: "./macro.js"
       }
     },
-    types: "types/index.d.ts",
+    types: "cardTypes.ts/index.d.ts",
     files: [
       "src",
       "dist",
       "jsx-runtime",
       "jsx-dev-runtime",
       "_isolated-hnrs",
-      "types/*.d.ts",
+      "cardTypes.ts/*.d.ts",
       "macro.*"
     ],
     sideEffects: !1,
     author: "Emotion Contributors",
     license: "MIT",
     scripts: {
-      "test:typescript": "dtslint types"
+      "test:typescript": "dtslint cardTypes.ts"
     },
     dependencies: {
       "@babel/runtime": "^7.18.3",
@@ -18058,7 +18058,7 @@ var za, Pje, Cde, JL, XL, GC, oa, Dde, Ade, YC, qC, QL, VC, WC, B5 = G(() => {
           "worker"
         ],
         extra: {
-          "./types/css-prop": "./types/css-prop.d.ts",
+          "./types/css-prop": "./cardTypes.ts/css-prop.d.ts",
           "./macro": {
             types: {
               import: "./macro.d.mts",
@@ -19342,7 +19342,7 @@ var Le, Ko, ia, a1 = G(() => {
   };
 });
 
-// src/theming/types.ts
+// src/theming/cardTypes.ts.ts
 var yP = G(() => {
   "use strict";
 });
@@ -22392,7 +22392,7 @@ var G7 = P((QWe, pM) => {
   a(dM, "Info");
 });
 
-// ../node_modules/hastscript/node_modules/property-information/lib/util/types.js
+// ../node_modules/hastscript/node_modules/property-information/lib/util/cardTypes.ts.js
 var t2 = P((Nl) => {
   "use strict";
   var Gpe = 0;
@@ -50327,7 +50327,7 @@ var li = /* @__PURE__ */ a((e, t) => (0, IK.default)({}, e, t, (r, o) => {
       r.find((c) => c === s || (0, LK.default)(c, s)) || r.push(s);
     }), r;
   if (Array.isArray(r))
-    return Pt.log(["the types mismatch, picking", r]), r;
+    return Pt.log(["the cardTypes.ts mismatch, picking", r]), r;
 }), "default");
 
 // src/manager-api/initial-state.ts
@@ -50353,13 +50353,13 @@ Ft(OA, {
   init: () => PFe
 });
 
-// src/types/index.ts
+// src/cardTypes.ts/index.ts
 var Av = {};
 Ft(Av, {
   Addon_TypesEnum: () => Rv
 });
 
-// src/types/modules/addons.ts
+// src/cardTypes.ts/modules/addons.ts
 var Rv = /* @__PURE__ */ ((h) => (h.TAB = "tab", h.PANEL = "panel", h.TOOL = "tool", h.TOOLEXTRA = "toolextra", h.PREVIEW = "preview", h.experimental_PAGE =
 "page", h.experimental_SIDEBAR_BOTTOM = "sidebar-bottom", h.experimental_SIDEBAR_TOP = "sidebar-top", h))(Rv || {});
 
