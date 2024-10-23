@@ -1,65 +1,84 @@
-import { createBrowserRouter, Navigate, Outlet, RouteObject, RouterProvider } from 'react-router-dom';
-import { DecksPage } from '../pages/decks/Decks.page';
-import { Slider } from '../components/ui/slider/slider';
-import { Pagination } from '../components/ui/paginator/paginator';
-import { Layout } from '@/components/layout/layout';
-import { SignIn } from '@/pages/sign-in/Sign-in';
-import { SignUp } from '@/pages/sign-up/Sign-up';
-import { ForgotPass } from '@/pages/password_recovery/fogot_pass/FogotPass';
-import { CreatePass } from '@/pages/password_recovery/create_new_pass/CreatePass';
+import {
+  Navigate,
+  Outlet,
+  RouteObject,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
+
+import { Layout } from "@/components/layout/layout";
+import { Deck } from "@/pages/decks/deck/deck";
+import { CreatePass } from "@/pages/password_recovery/create_new_pass/CreatePass";
+import { ForgotPass } from "@/pages/password_recovery/fogot_pass/FogotPass";
+import { SignIn } from "@/pages/sign-in/Sign-in";
+import { SignUp } from "@/pages/sign-up/Sign-up";
+
+import { Pagination } from "../components/ui/paginator/paginator";
+import { Slider } from "../components/ui/slider/slider";
+import { DecksPage } from "../pages/decks/Decks.page";
 
 const publicRoutes: RouteObject[] = [
   {
-    path: '/login',
     element: <Slider value={[1, 10]} />,
+    path: "/login",
   },
   {
-    path: '/page',
     element: (
-      <Pagination totalCount={20} pageSize={3} onPageChange={() => {}} onPageSizeChange={() => {}} currentPage={1} />
+      <Pagination
+        currentPage={1}
+        onPageChange={() => {}}
+        onPageSizeChange={() => {}}
+        pageSize={3}
+        totalCount={20}
+      />
     ),
+    path: "/page",
   },
   {
-    path: '/sign-in',
     element: <SignIn />,
+    path: "/sign-in",
   },
   {
-    path: '/sign-up',
     element: <SignUp />,
+    path: "/sign-up",
   },
   {
-    path: '/recover-password',
     element: <ForgotPass />,
+    path: "/recover-password",
   },
   {
-    path: '/reset-password/:token',
     element: <CreatePass />,
+    path: "/reset-password/:token",
+  },
+  {
+    element: <Deck />,
+    path: "/deck",
   },
 ];
 
 const privateRoutes: RouteObject[] = [
   {
-    path: '/',
     element: <DecksPage />,
+    path: "/",
   },
 ];
 
 function PrivateRoutes() {
   const isAuthenticated = true;
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/sign-in" />;
+  return isAuthenticated ? <Outlet /> : <Navigate to={"/sign-in"} />;
 }
 
 const router = createBrowserRouter([
   {
-    element: <Layout />, // Wrap routes with Layout
     children: [
       {
-        element: <PrivateRoutes />,
         children: privateRoutes,
+        element: <PrivateRoutes />,
       },
       ...publicRoutes,
     ],
+    element: <Layout />, // Wrap routes with Layout
   },
 ]);
 

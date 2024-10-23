@@ -1,12 +1,12 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export type UserResponse = {
   avatar: string;
-  id: string;
+  created: string;
   email: string;
+  id: string;
   isEmailVerified: boolean;
   name: string;
-  created: string;
   updated: string;
 };
 
@@ -17,79 +17,81 @@ export type TokenType = {
 
 // Define the API slice using createApi
 export const authAPI = createApi({
-  reducerPath: 'authAPI',
-  tagTypes: ['Cards','me'],
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api.flashcards.andrii.es',
-    credentials: 'include',
+    baseUrl: "https://api.flashcards.andrii.es",
+    credentials: "include",
     prepareHeaders: (headers) => {
-      headers.append('x-auth-skip', 'true');
+      headers.append("x-auth-skip", "true");
     },
   }),
   endpoints: (builder) => ({
-    getMe: builder.query<UserResponse | null | { success: boolean }, void>({
+    getMe: builder.query<{ success: boolean } | UserResponse | null, void>({
+      extraOptions: {
+        maxRetries: 0,
+      },
+      keepUnusedDataFor: 0,
+      providesTags: ["me"],
       async queryFn(_name, _api, _extraOptions, baseQuery) {
         const result = await baseQuery({
+          method: "GET",
           url: `v1/auth/me`,
-          method: 'GET',
         });
-
-        console.log(result)
 
         if (result.error) {
           return {
-            data: { success: false, result: result.error },
+            data: { result: result.error, success: false },
           };
         }
 
         return { data: result.data } as { data: UserResponse };
       },
-      keepUnusedDataFor: 0,
-      extraOptions: {
-        maxRetries: 0,
-      },
-      providesTags: ['me'],
     }),
 
-    login: builder.mutation<{ accessToken: string }, { email: string; password: string; rememberMe: boolean }>({
+    login: builder.mutation<
+      { accessToken: string },
+      { email: string; password: string; rememberMe: boolean }
+    >({
+      invalidatesTags: ["me"],
       query: (data) => ({
-        url: `v1/auth/login`,
-        method: 'POST',
         body: data,
+        method: "POST",
+        url: `v1/auth/login`,
       }),
-      invalidatesTags: ['me'],
-
     }),
 
-    signup: builder.mutation<UserResponse, { email: string; password: string }>({
-      query: (body) => ({
-        url: '/v1/auth/sign-up',
-        method: 'POST',
-        body,
+    logout: builder.mutation<void, void>({
+      invalidatesTags: ["me"],
+      query: () => ({
+        method: "POST",
+        url: "v1/auth/logout",
       }),
     }),
     recoverPassword: builder.mutation<void, { email: string }>({
       query: (body) => ({
-        url: '/v1/auth/recover-password',
-        method: 'POST',
         body,
+        method: "POST",
+        url: "/v1/auth/recover-password",
       }),
     }),
-    resetPassword: builder.mutation<void, { token: string; password: string }>({
-      query: ({ token, password }) => ({
-        url: `v1/auth/reset-password/${token}`,
-        method: 'POST',
+    resetPassword: builder.mutation<void, { password: string; token: string }>({
+      query: ({ password, token }) => ({
         body: { password },
+        method: "POST",
+        url: `v1/auth/reset-password/${token}`,
       }),
     }),
-    logout: builder.mutation<void, void>({
-      query: () => ({
-        url: 'v1/auth/logout',
-        method: 'POST',
-      }),
-      invalidatesTags: ['me'],
-    }),
+    signup: builder.mutation<UserResponse, { email: string; password: string }>(
+      {
+        query: (body) => ({
+          body,
+          method: "POST",
+          url: "/v1/auth/sign-up",
+        }),
+      },
+    ),
   }),
+  reducerPath: "authAPI",
+  tagTypes: ["Cards", "me"],
 });
 
 // Export hooks for usage in functional components
@@ -97,7 +99,7 @@ export const {
   useGetMeQuery,
   useLoginMutation,
   useLogoutMutation,
-  useSignupMutation,
   useRecoverPasswordMutation,
   useResetPasswordMutation,
+  useSignupMutation,
 } = authAPI;
