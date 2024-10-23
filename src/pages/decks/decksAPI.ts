@@ -33,7 +33,8 @@ export const decksApi = createApi({
       }),
     }),
   }),
-  tagTypes: ["Cards", "Deck"],
+  reducerPath: "decksApi",
+  tagTypes: ["Deck", "Cards"],
 });
 
 export const { useGetDeckByIdQuery, useGetDeckCardsQuery } = decksApi;

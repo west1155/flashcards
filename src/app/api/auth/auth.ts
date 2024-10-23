@@ -91,7 +91,7 @@ export const authAPI = createApi({
     ),
   }),
   reducerPath: "authAPI",
-  tagTypes: ["Cards", "me"],
+  tagTypes: ["Cards", "me", "Deck"],
 });
 
 // Export hooks for usage in functional components
