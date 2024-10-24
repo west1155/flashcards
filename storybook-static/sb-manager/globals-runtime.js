@@ -39417,7 +39417,7 @@ var P2 = Y.span(at, ({ theme: e }) => ({
   }
 }));
 
-// src/components/components/typography/elements/Table.tsx
+// src/components/components/typography/elements/table.tsx
 Ne();
 var k2 = Y.table(at, Ca, ({ theme: e }) => ({
   fontSize: e.typography.size.s2,

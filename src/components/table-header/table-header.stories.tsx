@@ -7,7 +7,7 @@ import { Sort, TableHeader } from './'
 import { Table } from '@/components/ui/table'
 
 const meta = {
-    title: 'Components/Table Header',
+    title: 'Components/table Header',
     component: Table.Root,
     tags: ['autodocs'],
 } satisfies Meta<typeof Table.Root>
