@@ -6,6 +6,8 @@ import {
 
 // @ts-ignore
 import s from "./Deck.module.scss";
+import { Typography } from '@/components/ui/typography';
+import { Button } from '@/components/ui/button';
 
 export const Deck = () => {
   const { data: deck } = useGetDeckByIdQuery({
@@ -15,10 +17,13 @@ export const Deck = () => {
     id: "clzsip59x01pgpi014nfqypu5",
   });
 
-  console.log(deck, cards);
-
   return (
     <section className={s.root}>
+      <div className={s.header}>
+        <Typography variant={"h1"}>{deck?.name}</Typography>
+        <Button variant={"primary"}>Add New Card</Button>
+      </div>
+
       {deck ? (
         <Table.Root className={s.table}>
           <Table.Head>
@@ -35,7 +40,7 @@ export const Deck = () => {
                 <Table.Cell>{card.question}</Table.Cell>
                 <Table.Cell>{card.answer}</Table.Cell>
                 <Table.Cell>
-                  {new Date(card.updated).toLocaleDateString("ru-RU")}
+                  {new Date(card.updated).toLocaleDateString("en-GB")}
                 </Table.Cell>
                 <Table.Cell>{card.grade}</Table.Cell>
               </Table.Row>

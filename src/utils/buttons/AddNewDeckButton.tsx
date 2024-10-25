@@ -1,9 +1,5 @@
-import { Button } from '@/components/ui/button';
-
-
+import { Button } from "@/components/ui/button";
 
 export const AddNewDeckButton = () => {
-    return (
-        <Button onClick={() => {}}> Add New Deck </Button>
-    )
-}
+  return <Button onClick={() => {}}> Add New Deck </Button>;
+};

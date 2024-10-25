@@ -1,4 +1,11 @@
 @import '../../styles/mixins';
 
-.content {
+.container {
+  width: 100%;
+  margin-top: 32px;
+
+  .content {
+    padding: 0 10em;
+    margin-top: 10em;
+  }
 }
