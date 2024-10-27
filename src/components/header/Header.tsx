@@ -5,6 +5,7 @@ import { ProfileInfoProps } from "@/components/header/profile-info/profile-info"
 import s from "./Header.module.scss";
 
 import { GlobalSvgSelector } from "../../assets/icons/global/GlobalSvgSelector";
+import flashscoreLogo from "../../assets/images/flashcards.webp";
 import { Button } from "../ui/button";
 
 type Props = {
@@ -18,7 +19,12 @@ export const Header = ({ data, logout }: Props) => {
       <div className={s.container}>
         <div className={s.link}>
           <div className={s.logo}>
-            <GlobalSvgSelector id={"logo"} />
+            <img
+              alt={"flashscore logo"}
+              height={"50"}
+              src={flashscoreLogo}
+              width={"147"}
+            />
           </div>
         </div>
         {data ? (
