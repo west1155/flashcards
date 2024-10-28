@@ -1,57 +1,63 @@
-import {FC, memo} from "react";
-import {clsx} from "clsx";
-import {usePagination} from "./usePagination";
+import { FC, memo } from "react";
+
+import { clsx } from "clsx";
+
 import s from "./paginator.module.scss";
-import {NavigationBlock} from "./navigation-block/navigation-block";
-import {Typography} from "../typography";
-import {PageSizeSelect} from "./page-size-selector/page-size-select";
+
+import { Typography } from "../typography";
+import { NavigationBlock } from "./navigation-block/navigation-block";
+import { PageSizeSelect } from "./page-size-selector/page-size-select";
+import { usePagination } from "./usePagination";
 
 export type PaginationProps = {
-    totalCount?: number
-    currentPage: number
-    onPageChange: (newPage: number) => void
-    pageSize: number
-    onPageSizeChange: (newPageSize: number) => void
-    siblingCount?: number
-    className?: string
-}
+  className?: string;
+  currentPage: number;
+  onPageChange: (newPage: number) => void;
+  onPageSizeChange: (newPageSize: number) => void;
+  pageSize: number;
+  siblingCount?: number;
+  totalCount?: number;
+};
 
 export const Pagination: FC<PaginationProps> = memo(
-    ({
-         totalCount = 10,
-         currentPage,
-         onPageChange,
-         pageSize,
-         onPageSizeChange,
-         siblingCount,
-         className,
-     }) => {
-        const classes = clsx(s.root, className)
+  ({
+    className,
+    currentPage,
+    onPageChange,
+    onPageSizeChange,
+    pageSize,
+    siblingCount,
+    totalCount = 10,
+  }) => {
+    const classes = clsx(s.root, className);
 
-        const paginationRange = usePagination({
-            currentPage,
-            totalCount,
-            siblingCount,
-            pageSize,
-        })
+    const paginationRange = usePagination({
+      currentPage,
+      pageSize,
+      siblingCount,
+      totalCount,
+    });
 
-        if (currentPage === 0 || paginationRange.length < 2) {
-            return null
-        }
-
-        return (
-            <div className={classes}>
-                <NavigationBlock
-                    paginationRange={paginationRange}
-                    currentPage={currentPage}
-                    onPageChange={onPageChange}
-                />
-                <div className={s.selectBlock}>
-                    <Typography variant="body2">Show</Typography>
-                    <PageSizeSelect pageSize={pageSize} onPageSizeChange={onPageSizeChange} />
-                    <Typography variant="body2">on the page</Typography>
-                </div>
-            </div>
-        )
+    if (currentPage === 0 || paginationRange.length < 2) {
+      return null;
     }
-)
+
+    return (
+      <div className={classes}>
+        <NavigationBlock
+          currentPage={currentPage}
+          onPageChange={onPageChange}
+          paginationRange={paginationRange}
+        />
+        <div className={s.selectBlock}>
+          <Typography variant={"body2"}>Show</Typography>
+          <PageSizeSelect
+            onPageSizeChange={onPageSizeChange}
+            pageSize={pageSize}
+          />
+          <Typography variant={"body2"}>on the page</Typography>
+        </div>
+      </div>
+    );
+  },
+);

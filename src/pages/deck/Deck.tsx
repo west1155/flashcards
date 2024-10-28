@@ -1,4 +1,6 @@
+import { Button } from "@/components/ui/button";
 import { Table } from "@/components/ui/table";
+import { Typography } from "@/components/ui/typography";
 import {
   useGetDeckByIdQuery,
   useGetDeckCardsQuery,
@@ -6,8 +8,6 @@ import {
 
 // @ts-ignore
 import s from "./Deck.module.scss";
-import { Typography } from '@/components/ui/typography';
-import { Button } from '@/components/ui/button';
 
 export const Deck = () => {
   const { data: deck } = useGetDeckByIdQuery({

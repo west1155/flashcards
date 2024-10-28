@@ -52,14 +52,18 @@ const publicRoutes: RouteObject[] = [
   },
   {
     element: <Deck />,
-    path: "/deck",
+    path: "/deck/:id",
+  },
+  {
+    element: <Navigate to={"/decks"} />,
+    path: "/",
   },
 ];
 
 const privateRoutes: RouteObject[] = [
   {
     element: <DecksPage />,
-    path: "/",
+    path: "/decks",
   },
 ];
 
