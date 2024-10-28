@@ -32,9 +32,20 @@ export const decksApi = createApi({
         url: `v1/decks/${id}/cards`,
       }),
     }),
+    getDeckMinMax: builder.query<DecksListResponse, GetDeckCards>({
+      providesTags: ["Deck"],
+      query: ({ id, ...params }) => ({
+        params: params,
+        url: `/v2/decks/min-max-cards`,
+      }),
+    }),
   }),
   reducerPath: "decksApi",
   tagTypes: ["Deck", "Cards"],
 });
 
-export const { useGetDeckByIdQuery, useGetDeckCardsQuery } = decksApi;
+export const {
+  useGetDeckByIdQuery,
+  useGetDeckCardsQuery,
+  useGetDeckMinMaxQuery,
+} = decksApi;

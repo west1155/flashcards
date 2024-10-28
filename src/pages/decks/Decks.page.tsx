@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { useGetMeQuery } from "@/app/api/auth/auth";
 import { Pagination } from "@/components/ui/paginator/paginator";
 import { Typography } from "@/components/ui/typography";
+import { useGetDeckMinMaxQuery } from "@/pages/decks/decksAPI";
 import { AddNewDeckButton } from "@/utils/buttons/AddNewDeckButton";
 import { FilterControls } from "@/utils/features/filter-control/filter-control";
 
@@ -22,8 +23,22 @@ export const DecksPage = () => {
     searchParams.get("page") !== null ? Number(searchParams.get("page")) : 1,
   );
   const [itemsPerPage, setItemsPerPage] = useState<number>(
-    searchParams.get("items") !== null ? Number(searchParams.get("items")) : 5,
+    searchParams.get("items") !== null ? Number(searchParams.get("items")) : 10,
   );
+
+  const [cardsRange, setCardsRange] = useState<(null | number)[]>([
+    searchParams.get("min") ? Number(searchParams.get("min")) : 3,
+    searchParams.get("max") ? Number(searchParams.get("max")) : 10,
+  ]);
+
+  const setMinMaxParam = (value: number[]) => {
+    setSearchParams({
+      ...Object.fromEntries(searchParams),
+      max: String(value[1]),
+      min: String(value[0]),
+    });
+    setCardsRange(value);
+  };
 
   const setPage = (page: number) => {
     setSearchParams({
@@ -72,9 +87,9 @@ export const DecksPage = () => {
         authUserId={"1"}
         searchName={search}
         setSearchName={setSearch}
-        setSliderValue={() => {}}
-        setTabValue={() => {}}
-        sliderValue={[0, 10]}
+        setSliderValue={setMinMaxParam}
+        setTabValue={()=> {}}
+        sliderValue={cardsRange}
         tabValue={"1"}
       />
       <DecksTable authUserId={"1"} deck={data?.items as DeckType[]} />

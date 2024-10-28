@@ -2,6 +2,7 @@
 
 .filter {
   @include flex(row, 24px, 12px, flex-end, space-between);
+  margin-bottom: 24px;
 
   .textField {
     flex: 0 1 300px;
