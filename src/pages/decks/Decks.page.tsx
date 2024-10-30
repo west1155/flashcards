@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { useGetMeQuery } from "@/app/api/auth/auth";
 import { Pagination } from "@/components/ui/paginator/paginator";
 import { Typography } from "@/components/ui/typography";
-import { useGetDecksMinMaxQuery } from "@/pages/decks/decksAPI";
 import { AddNewDeckButton } from "@/utils/buttons/AddNewDeckButton";
 import { FilterControls } from "@/utils/features/filter-control/filter-control";
 
@@ -17,10 +16,6 @@ export const DecksPage = () => {
   const [search, setSearch] = useState("");
   const { data: usetData } = useGetMeQuery();
 
-  const { currentData: minMaxCurrentData, data: minMaxData } =
-    useGetDecksMinMaxQuery();
-
-  const minMax = minMaxCurrentData ?? minMaxData;
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -31,16 +26,16 @@ export const DecksPage = () => {
     searchParams.get("items") !== null ? Number(searchParams.get("items")) : 10,
   );
 
-  const [cardsRange, setCardsRange] = useState<(number)[]>([
-    searchParams.get("min") ? Number(searchParams.get("min")) : 3,
-    searchParams.get("max") ? Number(searchParams.get("max")) : 10,
+  const [cardsRange, setCardsRange] = useState<number[]>([
+    searchParams.get("minCards") ? Number(searchParams.get("minCards")) : 0,
+    searchParams.get("maxCards") ? Number(searchParams.get("maxCards")) : 100,
   ]);
 
   const setMinMaxParam = (value: number[]) => {
     setSearchParams({
       ...Object.fromEntries(searchParams),
-      max: String(value[1]),
-      min: String(value[0]),
+      maxCards: String(value[1]),
+      minCards: String(value[0]),
     });
     setCardsRange(value);
   };

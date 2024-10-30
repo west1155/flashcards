@@ -1,49 +1,55 @@
-import * as SliderRadixUI from '@radix-ui/react-slider'
+import { Typography } from "@/components/ui/typography";
+import * as SliderRadixUI from "@radix-ui/react-slider";
 
-import s from './slider.module.scss'
-
-import { Typography } from '@/components/ui/typography'
+import s from "./slider.module.scss";
 
 type SliderProps = {
-    min?: number
-    max?: number
-    value: number[]
-    step?: number
-    onChange?: (value: number[]) => void
-    label?: string
-}
-export const Slider = ({ min, max, value, step = 1, onChange, label }: SliderProps) => {
-    return (
-        <Typography as="label" variant="body2" className={s.label}>
-            {label}
-            <div className={s.body}>
-                <Typography as={'h3'} variant={'body1'} className={s.value}>
-                    {value[0]}
-                </Typography>
-                <SliderRadixUI.Root
-                    className={s.line}
-                    value={value}
-                    onValueChange={onChange}
-                    min={min}
-                    max={max}
-                    step={step}
-                >
-                    <SliderRadixUI.Track className={s.track}>
-                        <SliderRadixUI.Range className={s.range} />
-                    </SliderRadixUI.Track>
-                    <SliderRadixUI.Thumb className={s.thumb} aria-label="Volume">
-                        <div className={s.dot}></div>
-                    </SliderRadixUI.Thumb>
-                    <SliderRadixUI.Thumb className={s.thumb} aria-label="Volume">
-                        <div className={s.dot}></div>
-                    </SliderRadixUI.Thumb>
-                </SliderRadixUI.Root>
-                <div className={s.minMax}>
-                    <Typography as={'h3'} variant={'body1'} className={s.value}>
-                        {value[1]}
-                    </Typography>
-                </div>
-            </div>
+  label?: string;
+  max?: number;
+  min?: number;
+  onChange?: (value: number[]) => void;
+  step?: number;
+  value: number[];
+};
+export const Slider = ({
+  label,
+  max,
+  min,
+  onChange,
+  step = 1,
+  value,
+}: SliderProps) => {
+  return (
+    <Typography as={"label"} className={s.label} variant={"body2"}>
+      {label}
+      <div className={s.body}>
+        <Typography as={"h3"} className={s.value} variant={"body1"}>
+          {value[0]}
         </Typography>
-    )
-}
+        <SliderRadixUI.Root
+          className={s.line}
+          max={max}
+          min={min}
+          onValueChange={onChange}
+          step={step}
+          value={value}
+        >
+          <SliderRadixUI.Track className={s.track}>
+            <SliderRadixUI.Range className={s.range} />
+          </SliderRadixUI.Track>
+          <SliderRadixUI.Thumb aria-label={"Volume"} className={s.thumb}>
+            <div className={s.dot}></div>
+          </SliderRadixUI.Thumb>
+          <SliderRadixUI.Thumb aria-label={"Volume"} className={s.thumb}>
+            <div className={s.dot}></div>
+          </SliderRadixUI.Thumb>
+        </SliderRadixUI.Root>
+        <div className={s.minMax}>
+          <Typography as={"h3"} className={s.value} variant={"body1"}>
+            {value[1]}
+          </Typography>
+        </div>
+      </div>
+    </Typography>
+  );
+};

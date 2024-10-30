@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import { Layout } from "@/components/layout/layout";
+import { ModalWindow } from "@/components/ui/modal-window/ModalWindow";
 import { CreatePass } from "@/pages/password_recovery/create_new_pass/CreatePass";
 import { ForgotPass } from "@/pages/password_recovery/fogot_pass/FogotPass";
 import { SignIn } from "@/pages/sign-in/Sign-in";

@@ -45829,7 +45829,7 @@ IR.registerLanguage = (...e) => {
 w1();
 dD();
 
-// src/components/components/Modal/Modal.tsx
+// src/components/components/ModalWindow/ModalWindow.tsx
 var Oc = te(fe(), 1);
 
 // ../node_modules/@radix-ui/react-dialog/dist/index.mjs
@@ -47090,7 +47090,7 @@ var H4e = "DialogTitleWarning", [z4e, DZe] = GN(H4e, {
 });
 var e6 = rj, j4e = nj, t6 = ij, r6 = sj, n6 = lj, a6 = fj, o6 = dj, i6 = pj;
 
-// src/components/components/Modal/Modal.styled.tsx
+// src/components/components/ModalWindow/ModalWindow.styled.tsx
 var u6 = {};
 Ft(u6, {
   Actions: () => X4e,
@@ -47256,7 +47256,7 @@ var K1 = (0, jb.forwardRef)(
 );
 K1.displayName = "IconButton";
 
-// src/components/components/Modal/Modal.styled.tsx
+// src/components/components/ModalWindow/ModalWindow.styled.tsx
 var hj = oa({
   from: { opacity: 0 },
   to: { opacity: 1 }
@@ -47344,7 +47344,7 @@ var hj = oa({
   ...t
 }) => /* @__PURE__ */ Ps.default.createElement(yj, { ...t }, /* @__PURE__ */ Ps.default.createElement("div", null, e)), "Error");
 
-// src/components/components/Modal/Modal.tsx
+// src/components/components/ModalWindow/ModalWindow.tsx
 function J4e({
   children: e,
   width: t,

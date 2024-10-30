@@ -15,7 +15,7 @@ type Props = {
   setSliderValue: (newValue: number[]) => void;
   setTabValue: (newTab: string) => void;
   sliderMaxValue?: number;
-  sliderValue: (null | number)[];
+  sliderValue: number[];
   tabValue: string;
 };
 
@@ -26,7 +26,7 @@ export const FilterControls: FC<Props> = memo(
     setSearchName,
     setSliderValue,
     setTabValue,
-    sliderMaxValue = 10,
+    sliderMaxValue = 100,
     sliderValue,
     tabValue,
   }) => {
@@ -47,12 +47,15 @@ export const FilterControls: FC<Props> = memo(
 
     return (
       <div className={s.filter}>
-        <TextField
-          className={s.textField}
-          onChange={(e) => setSearchName(e.currentTarget.value)}
-          type={"search"}
-          value={searchName}
-        />
+        <div className={s.textField}>
+          <TextField
+            className={s.textField}
+            onChange={(e) => setSearchName(e.currentTarget.value)}
+            placeholder={"Search..."}
+            type={"search"}
+            value={searchName}
+          />
+        </div>
         <TabSwitcher
           label={"Show packs cards"}
           onValueChange={setTabValue}

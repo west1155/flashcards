@@ -1,4 +1,4 @@
-@import '../../../styles/mixins';
+@import '@/styles/mixins';
 
 .label {
   @include flex(column, 7px);
@@ -53,6 +53,8 @@
 
       .thumb {
         @include interactive-circle-element(36px);
+
+
 
 
         &:hover::after,
