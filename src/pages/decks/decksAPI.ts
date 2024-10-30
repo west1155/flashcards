@@ -5,6 +5,7 @@ import {
   DecksListResponse,
   GetDeckById,
   GetDeckCards,
+  MinMaxCardsInDeck,
 } from "./Decks.types";
 
 export const decksApi = createApi({
@@ -32,11 +33,9 @@ export const decksApi = createApi({
         url: `v1/decks/${id}/cards`,
       }),
     }),
-    getDeckMinMax: builder.query<DecksListResponse, GetDeckCards>({
-      providesTags: ["Deck"],
-      query: ({ id, ...params }) => ({
-        params: params,
-        url: `/v2/decks/min-max-cards`,
+    getDecksMinMax: builder.query<MinMaxCardsInDeck, void>({
+      query: () => ({
+        url: "/v2/decks/min-max-cards",
       }),
     }),
   }),
@@ -47,5 +46,5 @@ export const decksApi = createApi({
 export const {
   useGetDeckByIdQuery,
   useGetDeckCardsQuery,
-  useGetDeckMinMaxQuery,
+  useGetDecksMinMaxQuery,
 } = decksApi;

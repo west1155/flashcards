@@ -66,3 +66,8 @@ export interface Card {
   updated: string;
   userId: string;
 }
+
+export type MinMaxCardsInDeck = {
+  maxCards: number;
+  minCards: number;
+};
