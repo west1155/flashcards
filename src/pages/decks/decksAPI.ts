@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import {
+  CreateDecksArgs,
   Deck,
   DecksListResponse,
   GetDeckById,
@@ -19,6 +20,27 @@ export const decksApi = createApi({
     },
   }),
   endpoints: (builder) => ({
+    createDeck: builder.mutation<Deck, CreateDecksArgs>({
+      query: ({ cover, isPrivate, name }) => {
+        const formData = new FormData();
+
+        if (name) {
+          formData.append("name", name);
+        }
+        if (isPrivate) {
+          formData.append("isPrivate", isPrivate.toString());
+        }
+        if (cover) {
+          formData.append("cover", cover);
+        }
+
+        return {
+          body: formData,
+          method: "POST",
+          url: `v1/decks`,
+        };
+      },
+    }),
     getDeckById: builder.query<Omit<Deck, "author">, GetDeckById>({
       providesTags: ["Deck"],
       query: ({ id }) => ({
@@ -33,6 +55,7 @@ export const decksApi = createApi({
         url: `v1/decks/${id}/cards`,
       }),
     }),
+
     getDecksMinMax: builder.query<MinMaxCardsInDeck, void>({
       query: () => ({
         url: "/v2/decks/min-max-cards",
@@ -47,4 +70,5 @@ export const {
   useGetDeckByIdQuery,
   useGetDeckCardsQuery,
   useGetDecksMinMaxQuery,
+    useCreateDeckMutation,
 } = decksApi;

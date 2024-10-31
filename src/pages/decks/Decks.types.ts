@@ -71,3 +71,23 @@ export type MinMaxCardsInDeck = {
   maxCards: number;
   minCards: number;
 };
+
+export interface CreateDecksArgs {
+  cover?: string;
+  isPrivate?: boolean;
+  name: string;
+}
+
+/*-----------------------------------------------*/
+
+export type ErrorsField = {
+  message: string;
+  path: string;
+  statusCode: number;
+  timestamp: string;
+};
+
+export type ErrorResponseField = {
+  data: ErrorsField;
+  status: number;
+};
