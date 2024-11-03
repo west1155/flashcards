@@ -9,7 +9,7 @@ export const AddNewDeckButton = () => {
   return (
     <>
       <ModalWindow onOpenChange={setOpen} open={open} title={"Create new pack"}>
-        <div>Form</div>
+        <div>Form is here</div>
       </ModalWindow>
       <Button onClick={() => setOpen(true)}> Add New Deck </Button>
     </>
