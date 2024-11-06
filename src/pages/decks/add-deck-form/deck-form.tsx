@@ -2,10 +2,13 @@ import { FC, useState } from "react";
 import { toast } from "react-toastify";
 
 import { Button } from "@/components/ui/button";
+import { ControlledPreviewFileUploader } from "@/components/ui/controlled/form_file_preview_uploader/controlledFilePreview";
 import { FormCheckbox } from "@/components/ui/controlled/form-checkbox/form-checkbox";
 import { FormTextField } from "@/components/ui/controlled/form-textfield/form-textfield";
-import { FileUploader } from "@/components/ui/file-uploader/file-uploader";
-import {DeckFormType, usePackForm} from "@/pages/decks/add-deck-form/use-deck-form";
+import {
+  DeckFormType,
+  usePackForm,
+} from "@/pages/decks/add-deck-form/use-deck-form";
 
 import s from "./deck-form.module.scss";
 
@@ -93,7 +96,7 @@ export const DeckForm: FC<Props> = ({ defaultValues, onCancel, onSubmit }) => {
 
   return (
     <form className={s.form} onSubmit={handleSubmit(sendHandler)}>
-      <FileUploader
+      <ControlledPreviewFileUploader
         control={control}
         deleteCoverHandler={deleteCoverHandler}
         errorMessage={coverError}
