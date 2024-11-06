@@ -355,6 +355,31 @@ export const GlobalSvgSelector: React.FC<Props> = ({ id }) => {
         </svg>
       );
     }
+    case "edit": {
+      return (
+        <svg
+          fill={"currentColor"}
+          height={"16"}
+          viewBox={"0 0 17 16"}
+          width={"16"}
+          xmlns={"http://www.w3.org/2000/svg"}
+        >
+          <g clipPath={"url(#image-outlined-icon_svg__a)"}>
+            <path
+              d={
+                "M12.5 2h-8a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2m-8 1.33h8a.67.67 0 0 1 .67.67v5.57l-2.14-1.82a1.85 1.85 0 0 0-2.34 0L3.83 11.8V4a.67.67 0 0 1 .67-.67m8 9.34H4.87l4.67-3.9a.52.52 0 0 1 .62 0l3 2.56V12a.67.67 0 0 1-.66.67"
+              }
+            ></path>
+            <path d={"M5.83 6.67a1 1 0 1 0 0-2 1 1 0 0 0 0 2"}></path>
+          </g>
+          <defs>
+            <clipPath id={"image-outlined-icon_svg__a"}>
+              <path d={"M.5 0h16v16H.5z"}></path>
+            </clipPath>
+          </defs>
+        </svg>
+      );
+    }
     case "logout": {
       return (
         <svg
