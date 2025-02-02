@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState } from 'react';
 import { useSearchParams } from "react-router-dom";
 
-import { useGetMeQuery } from "@/app/api/auth/auth";
 import { Pagination } from "@/components/ui/paginator/paginator";
 import { Typography } from "@/components/ui/typography";
 import { AddNewDeckButton } from "@/utils/buttons/AddNewDeckButton";
@@ -14,8 +13,6 @@ import { DeckType, DecksTable } from "./DecksTable";
 
 export const DecksPage = () => {
   const [search, setSearch] = useState("");
-  const { data: usetData } = useGetMeQuery();
-
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -27,15 +24,15 @@ export const DecksPage = () => {
   );
 
   const [cardsRange, setCardsRange] = useState<number[]>([
-    searchParams.get("minCards") ? Number(searchParams.get("minCards")) : 0,
-    searchParams.get("maxCards") ? Number(searchParams.get("maxCards")) : 100,
+    searchParams.get("min") !== null ? Number(searchParams.get("min")) : 3,
+    searchParams.get("max") !== null ? Number(searchParams.get("max")) : 10,
   ]);
 
   const setMinMaxParam = (value: number[]) => {
     setSearchParams({
       ...Object.fromEntries(searchParams),
-      maxCards: String(value[1]),
-      minCards: String(value[0]),
+      max: String(value[1]),
+      min: String(value[0]),
     });
     setCardsRange(value);
   };
@@ -58,8 +55,8 @@ export const DecksPage = () => {
   const { data, error, isLoading } = useGetDecksQuery({
     currentPage: currentPage,
     itemsPerPage: itemsPerPage,
-    maxCardsCount: cardsRange[1],
     minCardsCount: cardsRange[0],
+    maxCardsCount: cardsRange[1],
     name: search,
   });
 
@@ -94,7 +91,7 @@ export const DecksPage = () => {
         sliderValue={cardsRange}
         tabValue={"1"}
       />
-      <DecksTable authUserId={"1"} deck={data?.items as DeckType[]} />
+      <DecksTable authUserId={"1"} deck={data?.items as unknown as DeckType[]} />
       <Pagination
         currentPage={currentPage}
         onPageChange={setPage}

@@ -1,1 +1,1 @@
-export { loadingSelector } from './loading-selector.ts'
+export { loadingSelector } from "./loading-selector";

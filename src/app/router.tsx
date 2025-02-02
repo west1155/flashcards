@@ -7,16 +7,11 @@ import {
 } from "react-router-dom";
 
 import { Layout } from "@/components/layout/layout";
-import { ModalWindow } from "@/components/ui/modal-window/ModalWindow";
-import { CreatePass } from "@/pages/password_recovery/create_new_pass/CreatePass";
-import { ForgotPass } from "@/pages/password_recovery/fogot_pass/FogotPass";
-import { SignIn } from "@/pages/sign-in/Sign-in";
-import { SignUp } from "@/pages/sign-up/Sign-up";
+import { DecksPage } from "@/pages/decks/Decks.page";
 
 import { Pagination } from "../components/ui/paginator/paginator";
 import { Slider } from "../components/ui/slider/slider";
 import { Deck } from "../pages/deck/Deck";
-import { DecksPage } from "../pages/decks/Decks.page";
 
 const publicRoutes: RouteObject[] = [
   {
@@ -34,22 +29,6 @@ const publicRoutes: RouteObject[] = [
       />
     ),
     path: "/page",
-  },
-  {
-    element: <SignIn />,
-    path: "/sign-in",
-  },
-  {
-    element: <SignUp />,
-    path: "/sign-up",
-  },
-  {
-    element: <ForgotPass />,
-    path: "/recover-password",
-  },
-  {
-    element: <CreatePass />,
-    path: "/reset-password/:token",
   },
   {
     element: <Deck />,
