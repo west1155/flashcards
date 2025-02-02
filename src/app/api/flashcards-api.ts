@@ -5,7 +5,7 @@ const BASE_URL = process.env.REACT_APP_API_URL;
 
 export const flashcardsApi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: BASE_URL,
+    baseUrl: "https://api.flashcards.andrii.es",
     credentials: "include",
     prepareHeaders: (headers) => {
       headers.append("x-auth-skip", "true");
